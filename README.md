@@ -17,8 +17,9 @@ From pypi
 ```
 or from github
 ```bash
->>> git clone https://github.com/dadmoscow/pyedid
->>> python pyedid/setup.py install
+>>> python -m pip install git+https://github.com/timotheuslin/pyedid --user --upgrade
+(for Windows)
+>>> py -3 -m pip install git+https://github.com/timotheuslin/pyedid --user --upgrade
 ```
 
 ## Features
@@ -27,8 +28,6 @@ or from github
 * Works as a shell utility
 * Without third-party dependencies
 
-## ToDo
-* Add Python 2.7 support
 
 ## Use
 ### As a library
@@ -97,20 +96,38 @@ print(edid)
 # 	dpms_standby=True,
 # 	dpms_suspend=True,
 # 	edid_version=1.3,
-# 	gamma=2.2,
-# 	height=30.0,
-# 	manufacturer=Ancor Communications Inc,
-# 	manufacturer_id=1129,
-# 	name=VS248,
-# 	product=38948,
-# 	raw=b'\x00\xff\xff\xff\xff\xff\xff\x00\x04i\x98$\x01\x01\x01\x01\x1e\x1b\x01\x03\x1e5\x1ex\xea\x92e\xa6UU\x9f(\rPT\xbf\xef\x00qO\x81\x80\x81@\x95\x00\xa9@\xb3\x00\xd1\xc0\x01\x01\x02:\x80\x18q8-@X,E\x00\x13+!\x00\x00\x1e\x00\x00\x00\xfd\x002L\x1eS\x11\x00\n      \x00\x00\x00\xfc\x00VS248\n       \x00\x00\x00\xff\x00H7LMQS122161\n\x00\x00',
-# 	resolutions=[(720, 400, 70.0), (720, 400, 88.0), (640, 480, 60.0), (640, 480, 67.0), (640, 480, 72.0), (640, 480, 75.0), (800, 600, 56.0), (800, 600, 60.0), (800, 600, 70.0), (800, 600, 75.0), (832, 624, 75.0), (1024, 768, 87.0), (1024, 768, 60.0), (1024, 768, 72.0), (1024, 768, 75.0), (1152, 864, 75.0), (1280, 1024, 60.0), (1280, 960, 60.0), (1440, 900, 60.0), (1600, 1200, 60.0), (1680, 1050, 60.0), (1920, 1080, 60.0)],
+#   ...
 # 	serial=H7LMQS123181,
 # 	type=digital,
 # 	width=53.0,
 # 	year=2017
 # )
 ```
+
+
+### As a system utility for Windows (as you may get the EDID raw data with any means other than `xrandr --verbose`)
+```bash
+>>> pyedid xrandr.txt
+
+# Loading registry from web...
+# Done!
+
+# Edid(
+# 	dpms_activeoff=True,
+# 	dpms_standby=True,
+# 	dpms_suspend=True,
+# 	edid_version=1.3,
+#   ...
+# 	serial=H7LMQS123181,
+# 	type=digital,
+# 	width=53.0,
+# 	year=2017
+# )
+```
+
+## Credits
+- Jonas Lieb: https://github.com/jojonas/pyedid
+- Davydov Denis: https://github.com/dd4e/pyedid
 
 ## Licensing
 See LICENSE
